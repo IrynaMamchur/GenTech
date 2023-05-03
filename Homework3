@@ -1,0 +1,55 @@
+1 уровень сложности: (1) Назовите 5-7 типовых бизнес-процессов для платформы онлайн-стриминга
+
+Реклама 
+Reklama id
+Reklam__owner (собственник)
+OnWhatVideо (на каком ролике запускается)
+Created_ad (когда запущена)
+Is_blocked_forUser   (если оплачивается платная подписка без рекламы для определенных пользователей)
+Frequency  (частота показа: через каждые 15 минут, например)
+Quantity (сколько раз крутилась, счетчик)
+Is_finish (прекращена)
+
+
+
+2. Вывести заказы клиентов не из USA.
+Делала несколько вариантов, думаю, что первый самый правильный, поскольку в задании не требуется получить инфо ни по клиенту, ни по его стране, а только по заказам. 
+
+2.1. Полная инфо по заказу без инфо по странам и без инфо по клиенту 
+SELECT  
+Orders.OrderID,
+Orders.CustomerID,
+Orders.EmployeeID,
+Orders.OrderDate,
+Orders.ShipperID,
+FROM Orders
+JOIN Customers ON Orders.CustomerID=Customers.CustomerID
+WHERE Customers.Country NOT IN ('USA')
+
+
+2.2.полная инфо по заказу с полной инфо по клиенту
+
+SELECT *     
+FROM Orders
+JOIN Customers ON Orders.CustomerID=Customers.CustomerID
+WHERE Customers.Country NOT IN ('USA')
+
+2.3.полная инфо по заказу со страной клиента 
+SELECT  
+Orders.OrderID,
+Orders.CustomerID,
+Orders.EmployeeID,
+Orders.OrderDate,
+Orders.ShipperID,
+Customers.Country    
+FROM Orders
+JOIN Customers ON Orders.CustomerID=Customers.CustomerID
+WHERE Customers.Country NOT IN ('USA')
+
+
+
+3. К товарам от 50 до 90 EUR применить постоянную скидку в 10%.
+UPDATE Products 
+SET Price = Price *(1-0.1)
+ WHERE Price BETWEEN 50 AND 90
+

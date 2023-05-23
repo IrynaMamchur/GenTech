@@ -1,0 +1,50 @@
+ 1 уровень сложности: В рамках БД "online-курсы" напишите след/запросы:
+
+
+Опишите схему таблицу "расписание занятий"
+Опишите схему таблицы "преподаватели"
+Я решила сделать больше таблиц, поскольку считаю, что так более правильно. 
+Кроме того, я под расписаниями поняла, что это не дата, когда будет проводиться занятие, а именно закрепление предметов и преподавателей за группами. 
+В принципе, если речь была именно о датах и времени занятий, то в последней табличке вместо начало/конец надо указаь дату проведения.   
+
+
+Преподаватели:
+ticher_id int PRIMARY KEY auto_increment
+created_at timestamp DEFAULT current_timestamp,
+fullName     varchar(64) NOT NULL
+email varchar(64) UNIQUE 
+education varchar(64)  
+start timestamp default NULL,
+finish timestamp default NULL
+(можно дату рождения добавить для идентификации)
+
+Предметы:
+subject_id int PRIMARY KEY auto_increment
+created_at timestamp DEFAULT current_timestamp,
+fullName     varchar(64) NOT NULL
+
+Детализация предмета:
+subjectDetal_id int PRIMARY KEY auto_increment
+created_at timestamp DEFAULT current_timestamp,
+subject_id int NOT NULL FOREIGN KEY,
+ticher_id int NOT NULL FOREIGN KEY,
+start timestamp default NULL,
+finish timestamp default NULL
+
+Расписание:
+schedule_id int PRIMARY KEY auto_increment
+subject_id int NOT NULL FOREIGN KEY,
+ticher_id int NOT NULL FOREIGN KEY,
+group_id NOT NULL FOREIGN KEY,
+start timestamp default NULL,
+finish timestamp default NULL
+
+3.Вывести имена студентов и названия групп, в которых они состоят
+ SELECT 
+students.fullname,
+groups.name
+FROM students_attachments
+JOIN students ON students_attachments.student_id= students.student_id
+JOIN groups ON students_attachments.group_id= groups.group_id
+
+

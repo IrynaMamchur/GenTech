@@ -1,0 +1,45 @@
+2.	Опишите документ "кредит" с произвольными полями.
+Оформление программы «кредит»   InsertOne
+Внесение изменений в программу    UpdateOne
+Регистрация заявок на получение кредита  InsertOne
+Регистрация клиентов, желающих получить кредит  InsertOne
+Перевод клиентов из статуса, желающих получить кредит в статус «заемщик» при согласовании кредита. Может быть как  InsertOne   , так и  UpdateOne  , в зависимости от политики банка   
+Регистрация договоров.  InsertOne
+Внесение изменений в договора   UpdateOne
+Создание транзакций  InsertOne
+Удаление неактуальных заявок (например, через полгода)  deleteMany
+
+Kredit
+
+Kredit_id
+Kredit_program_id
+Created_at
+Recipient_id
+Amount
+percent 
+Started_at
+Finished_at_plan
+Finished_at_real
+quantity_tranzaction_plan
+transaction_id   (история всех платежей) 
+menedger_id
+
+3.	Опишите документ "заказ" с произвольными полями.
+Регистрация заказа  InsertOne
+Внесение изменений в заказ   UpdateOne
+Регистрация клиентов InsertOne
+Внесение изменений по клиенту UpdateOne
+Оплата  InsertOne
+Удаление неактуальных заявок (например, от которых отказались- через полгода)  deleteMany
+
+Order
+Order_id
+Created_at
+Recipient_id
+Completed   (bool)
+Completed_at
+OrderDetail_id
+Amount
+Payment_id 
+Meneger_id
+
